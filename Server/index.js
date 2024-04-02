@@ -4,7 +4,11 @@ const cors = require('cors');
 const userModel = require('./db');
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods: ['POST', 'GET', 'PUT', 'DELETE'],
+    credentials: true
+}));
 
 app.post('/create', async (req, res) => {
     const { first_name, last_name, email, gender, avatar, domain, available } = req.body;
@@ -32,8 +36,8 @@ const ItemsPerPage = 16;
 
 app.get('/', async (req, res) => {
     const { page, pageSize } = req.query;
-    const pageNumber = parseInt(page) || 1; 
-    const size = parseInt(pageSize) || ItemsPerPage; 
+    const pageNumber = parseInt(page) || 1;
+    const size = parseInt(pageSize) || ItemsPerPage;
     const skip = (pageNumber - 1) * size;
 
     try {
@@ -54,18 +58,18 @@ app.get('/', async (req, res) => {
     }
 });
 
-app.get('/edit/:id',async(req,res)=>{
-    let {id} = req.params
-    await userModel.findById({_id:id})
-    .then((users)=>{
-        res.json(users)
-    })
-    
+app.get('/edit/:id', async (req, res) => {
+    let { id } = req.params
+    await userModel.findById({ _id: id })
+        .then((users) => {
+            res.json(users)
+        })
+
 })
 
 // app.put('/edit/:id',(req,res)=>{
 //     const {id} = req.params
-    
+
 //     userModel.findByIdAndUpdate({_id:id},{first_name, last_name, email, gender, avatar, domain, available})
 //     .then((users)=>{
 //         res.json(users)
