@@ -13,7 +13,7 @@ const Edit = () => {
     let [available,setAvailable] = useState('')
     let obj = useParams()
     useEffect(()=>{
-        axios.get(`http://localhost:3000/edit/${obj.id}`)
+        axios.get(`https://employee-management-mern-stack.vercel.app/edit/${obj.id}`)
         .then((response)=>{
             setFirst_name(response.data.first_name)
             setLast_name(response.data.last_name)
@@ -27,7 +27,7 @@ const Edit = () => {
 
     let but1 = (e) =>{
         e.preventDefault()
-        axios.put(`http://localhost:3000/edit/${obj.id}`,{first_name,last_name,email,gender,avatar,domain,available})
+        axios.put(`https://employee-management-mern-stack.vercel.app/edit/${obj.id}`,{first_name,last_name,email,gender,avatar,domain,available})
         .then(()=>{
             console.log("put is successfull");
         })
