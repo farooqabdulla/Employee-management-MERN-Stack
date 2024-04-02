@@ -22,7 +22,7 @@ const View = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`https://employee-management-mern-stack.vercel.app//?page=${page}`);
+            const response = await axios.get(`https://employee-management-mern-stack.vercel.app/?page=${page}`);
             setContent(response.data.users);
             console.log(response.data);
         } catch (error) {
