@@ -22,7 +22,7 @@ const View = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/?page=${page}`);
+            const response = await axios.get(`https://employee-management-mern-stack.vercel.app//?page=${page}`);
             setContent(response.data.users);
             console.log(response.data);
         } catch (error) {
@@ -44,7 +44,7 @@ const View = () => {
     }
     let Navigate = useNavigate()
     // let handleDelete = (id) =>{
-    //     axios.delete(`http://localhost:3000/delete/${id}`)
+    //     axios.delete(`https://employee-management-mern-stack.vercel.app//delete/${id}`)
     //     window.location.reload()
     // }
     const handleSearchChange = debounce((value) => {
